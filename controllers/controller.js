@@ -81,13 +81,13 @@ exports.login = async (req, res)  => {
             switch(user) {
 
                 case user.checkStatus === 1:  // For Invalid Email
-                    util.makeJsonResponse(res, false, httpStatusCode.OK, langMsg.InvalidEmailId, []);
+                    util.makeJsonResponse(res, false, httpStatusCode.OK, langMsg.invalidEmailId, []);
                 
                 case user.checkStatus === 2:  // For Invalid Password
-                    util.makeJsonResponse(res, false, httpStatusCode.OK, langMsg.InvalidPassword, []);
+                    util.makeJsonResponse(res, false, httpStatusCode.OK, langMsg.invalidPassword, []);
 
                 case user.isBlocked == '1':  // For blocked user
-                    util.makeJsonResponse(res, false, httpStatusCode.OK, langMsg.blocked, []);
+                    util.makeJsonResponse(res, false, httpStatusCode.OK, langMsg.userBlocked, []);
                 
                 default:
 
@@ -161,7 +161,7 @@ exports.categoies = async (req, res)  => {
 
             }else{
 
-                util.makeJsonResponse(res, false, httpStatusCode.OK, langMsg.NotFound, []);
+                util.makeJsonResponse(res, false, httpStatusCode.OK, langMsg.notFound, []);
                                        
             }
 
@@ -259,7 +259,7 @@ exports.products = async (req, res)  => {
 
             }else{
 
-                util.makeJsonResponse(res, false, httpStatusCode.OK, langMsg.NotFound, []);
+                util.makeJsonResponse(res, false, httpStatusCode.OK, langMsg.notFound, []);
                                        
             }
 

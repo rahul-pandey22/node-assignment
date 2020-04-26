@@ -105,8 +105,8 @@ app.use('/crownStackService', crownStackService);
 
 
 app.use(function(req, res, next){
-  const LangMsg = config.Msg[req.app.get("lang")];
-  util.makeJsonResponse(res, false, config.Constant.APIResCode.NotFound, util.formatException(LangMsg.RouteNotAllowed.replace('<<<url>>>',req.url)), null);  
+  const langMsg = config.Msg[req.app.get("lang")];
+  util.makeJsonResponse(res, false, config.Constant.APIResCode.NotFound, util.formatException(langMsg.RouteNotAllowed.replace('<<<url>>>',req.url)), null);  
   return;
 });  
 
