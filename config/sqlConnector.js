@@ -11,16 +11,16 @@ exports.queryHandler = (query, values, printConsole, callback) => {
 				
 				connection.release();        // releasing connection
 				if (error) {
-					console.log("results: " + error) 
+					
 					callback(error, null);
 				} else {
-					//console.log("results: " + JSON.stringify(results)) 
+					
 					callback(null, results)
 				}
 			})
 		})
 	} catch (err) {
-		console.log("results: " + err) 
+		 
 		throw err
 	}
 }

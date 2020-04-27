@@ -10,9 +10,6 @@ const jwt = require('jsonwebtoken');
 const service = require("../services/services");
 const schemaValidator = require("../schema/schema");
 const inspector = require('schema-inspector');
-const _message = require('../util/messageTriggers');
-const message = new _message();
-const synceach = require('sync-each');
 
 
 
@@ -166,7 +163,7 @@ exports.categoies = async (req, res)  => {
             }
 
     } catch (e) {
-        console.log(e);
+        
         
         util.makeJsonResponse(res, false,httpStatusCode.INTERNAL_SERVER_ERROR, langMsg.webError, []);
     }
@@ -264,8 +261,7 @@ exports.products = async (req, res)  => {
             }
 
     } catch (e) {
-        console.log(e);
-        
+                
         util.makeJsonResponse(res, false,httpStatusCode.INTERNAL_SERVER_ERROR, langMsg.webError, []);
     }
 }
@@ -333,7 +329,6 @@ exports.cart = async (req, res)  => {
         }
 
     } catch (e) {
-        console.log(e);
         
         util.makeJsonResponse(res, false,httpStatusCode.INTERNAL_SERVER_ERROR, langMsg.webError, []);
     }
@@ -393,7 +388,6 @@ exports.getCart = async (req, res)  => {
 
         
     } catch (e) {
-        console.log(e);
         
         util.makeJsonResponse(res, false,httpStatusCode.INTERNAL_SERVER_ERROR, langMsg.webError, []);
     }

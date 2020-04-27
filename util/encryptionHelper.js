@@ -1,10 +1,10 @@
-var promise = require('promise'),
+const promise = require('promise'),
 	config = require('../config/config');
 const jwt = require('jsonwebtoken');
-var moment = require('moment-timezone');
+const moment = require('moment-timezone');
 moment.tz.setDefault("Etc/Universal");
-var crypto = require('crypto');
-var constant = require('../config/appConstants');
+const crypto = require('crypto');
+const constant = require('../config/appConstants');
 
 function encryptionHelper() {
 
@@ -13,13 +13,13 @@ function encryptionHelper() {
 encryptionHelper.prototype.jwtToken = function (id,type) {
 	try {	
 		
-		var token = jwt.sign({'userId': id},type === constant.tokenType.accessToken ? config.secret : config.refreshSecret, {
+		let token = jwt.sign({'userId': id},type === constant.tokenType.accessToken ? config.secret : config.refreshSecret, {
             expiresIn: type === constant.tokenType.accessToken ? 86400 : 86400*15 // expires in 24 hours for acess token and 15 days for refresh token
 		});	
-	//	console.log(token);	
+		
 		return(token);
 	} catch (e) {
-		console.log(e);
+		
 		return(false);
 	}
 }
@@ -33,7 +33,7 @@ encryptionHelper.prototype.aesEncript = function (planText) {
 		let encryptedData = cipher.update(planText, 'utf8', 'hex') + cipher.final('hex');
 		return encryptedData;
 	} catch (e) {
-		console.log(e);
+		
 		return '';
 	}
 }
@@ -52,7 +52,7 @@ encryptionHelper.prototype.aesDecript = function (encryptedText) {
 encryptionHelper.prototype.tokenDecode = function (Token) {
 	return new promise(function (resolve, reject) {
 		try {
-			var decodedJwt = jwt.decode(Token, { complete: true });
+			let decodedJwt = jwt.decode(Token, { complete: true });
 			resolve(decodedJwt);
 		} catch (e) {
 			reject(false);

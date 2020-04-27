@@ -1,7 +1,7 @@
 module.exports = {
         
     loginSchema: function () {
-        var schema = {
+        let schema = {
             type: 'object',
             properties: {               
                 emailAddress: { type: 'string', pattern: 'email'},               
@@ -11,7 +11,7 @@ module.exports = {
         return schema;
     },
     cartSchema: function () {
-        var schema = {
+        let schema = {
             type: 'object',
             properties: {
                 decodedUserId: { type: 'number', lte: 2147483648},

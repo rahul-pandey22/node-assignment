@@ -1,29 +1,29 @@
-var promise = require('promise'),
+const promise = require('promise'),
 	each = require('sync-each');
-var moment = require('moment-timezone');
+const moment = require('moment-timezone');
 moment.tz.setDefault("Etc/Universal");
-var voucher_codes = require('voucher-code-generator');
+const voucher_codes = require('voucher-code-generator');
 const randtoken = require('rand-token');
 
 function customFunction() {
 }
 
 customFunction.prototype.randomString = function () {
-	var text = "";
-	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-	for (var i = 0; i < 9; i++) {
+	let text = "";
+	let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	for (let i = 0; i < 9; i++) {
 		text += possible.charAt(Math.floor(Math.random() * possible.length));
 	}
 	return text;
 }
 
 customFunction.prototype.generatePassword = function (passwordLength) {
-	var numberChars = "0123456789";
-	var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	var lowerChars = "!@#$%^&*()";
+	let numberChars = "0123456789";
+	let upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	let lowerChars = "!@#$%^&*()";
 	//'!','@','#','$','%','^','&','*','(',')'
-	var allChars = numberChars + upperChars + lowerChars;
-	var randPasswordArray = Array(passwordLength);
+	let allChars = numberChars + upperChars + lowerChars;
+	let randPasswordArray = Array(passwordLength);
 	randPasswordArray[0] = numberChars;
 	randPasswordArray[1] = upperChars;
 	randPasswordArray[2] = lowerChars;
@@ -32,9 +32,9 @@ customFunction.prototype.generatePassword = function (passwordLength) {
 }
 
 shuffleArray = function (array) {
-	for (var i = array.length - 1; i > 0; i--) {
-		var j = Math.floor(Math.random() * (i + 1));
-		var temp = array[i];
+	for (let i = array.length - 1; i > 0; i--) {
+		let j = Math.floor(Math.random() * (i + 1));
+		let temp = array[i];
 		array[i] = array[j];
 		array[j] = temp;
 	}
@@ -42,19 +42,19 @@ shuffleArray = function (array) {
 }
 
 customFunction.prototype.getLowerCase = function (text) {
-	var Ltext = "";
-	var Ltext = text.toLowerCase();
+	let Ltext = "";
+	let Ltext = text.toLowerCase();
 	return Ltext;
 }
 
 customFunction.prototype.replaceArrayOfString = function (string, find, replace) {
-	var replaceString = string;
-	var regex;
+	let replaceString = string;
+	let regex;
 	return new promise(function (resolve, reject) {
 		if (find.length > 0 && replace.length > 0 && string != "") {
 
 			each(find, function (item, next) {
-				var indexof = find.indexOf(item);
+				let indexof = find.indexOf(item);
 				regex = new RegExp(item, "g");
 				replaceString = replaceString.replace(regex, replace[indexof]);
 				next(null, item);
@@ -74,22 +74,22 @@ customFunction.prototype.getRandomInteger = function (min, max) {
 }
 
 customFunction.prototype.randomString = function () {
-	var text = "";
-	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-	for (var i = 0; i < 9; i++) {
+	let text = "";
+	let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	for (let i = 0; i < 9; i++) {
 		text += possible.charAt(Math.floor(Math.random() * possible.length));
 	}
 	return text;
 }
 
 customFunction.prototype.replaceArrayOfString = function (MatchString, Find, Replace) {
-	var ReplaceString = MatchString;
-	var Regex;
+	let ReplaceString = MatchString;
+	let Regex;
 	return new promise(function (resolve, reject) {
 		if (Find.length > 0 && Replace.length > 0 && MatchString != "") {
 
 			each(find, function (Item, Next) {
-				var IndexOf = Find.indexOf(item);
+				let IndexOf = Find.indexOf(item);
 				Regex = new RegExp(Item, "g");
 				ReplaceString = ReplaceString.replace(Regex, Replace[IndexOf]);
 				Next(null, Item);

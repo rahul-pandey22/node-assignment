@@ -1,7 +1,7 @@
 'use strict';
 
 // get the packages we need
-var fs = require('fs'), // use to handle file I/O opreations
+const fs = require('fs'), // use to handle file I/O opreations
   express = require('express'), //use to define framework
   expressValidator = require('express-validator'),
   app = express(), //taking express object for whole project
@@ -14,9 +14,9 @@ var fs = require('fs'), // use to handle file I/O opreations
   constants = require('./config/appConstants');
   global.fetch = require('node-fetch');
 
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-var https = require("https");
+const https = require("https");
 
 app.set('superSecret', constants.Secret); // secret variable
 // ====================================
@@ -48,7 +48,9 @@ app.use(bodyParser.urlencoded({
 
 //set default language
 app.use(function (req, res, next) {
-    var language = req.params.language || req.headers['language'];
+
+    let language = req.params.language || req.headers['language'];
+
     if (language) {
       if (config.lang.avail_lang[req.headers.language]) {
         app.set('lang', language);
@@ -92,12 +94,12 @@ app.use(express.static(__dirname + '/public'));
 //Adding route for docs 
 app.get('/docs', function (req, res) {
   app.use(express.static(__dirname + '/public/docs'));
-  //console.log(__dirname + '/public/docs');
+  
   res.sendFile('./public/docs/index.html', { root: __dirname });
 });
 
 //define common api and require routes based file
-var crownStackService = require('./routes/routes');
+let crownStackService = require('./routes/routes');
 //adding middleware for api
 app.use('/crownStackService', crownStackService);
 
@@ -113,15 +115,15 @@ app.use(function(req, res, next){
 // catch errors and save as file in log folder
 process
 .on('uncaughtException', function (err) {
-  var stack = err.stack;
-  var timeout = 1;
-  console.log('uncaughtException=====>', stack);
+  const stack = err.stack;
+  const timeout = 1;
+  
 })
 .on('unhandledRejection', (reason, p) => {
   console.error(reason, 'Unhandled Rejection at Promise', p);
 });
 
-var port = process.env.PORT || 4000;
+const port = process.env.PORT || 4000;
 app.listen(port, function() {
   console.log('Listening on ' + port);
 })

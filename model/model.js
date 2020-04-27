@@ -83,8 +83,8 @@ const commonModel = {}
         return new promise((resolve, reject) => {
             try {
             //get categories
-                var query = "CALL sp_categoies()";
-                var valueArr = [];
+                let query = "CALL sp_categoies()";
+                let valueArr = [];
 
                 connection.queryHandler(query, valueArr, false,function(error, results, fields) {
                     if (error){
@@ -92,13 +92,13 @@ const commonModel = {}
                         reject(error);
                     
                     }else {
-                        console.log(results[0]);
+                        
                         resolve(results[0]); 
                     }         
 
                 });
             } catch (err) {
-                console.log(err)
+                
                 reject(err);
             }
         });
@@ -109,8 +109,8 @@ const commonModel = {}
         return new promise((resolve, reject) => {
             try {
             //get products
-                var query = "CALL sp_products(?)";
-                var valueArr = [categoryId];
+                let query = "CALL sp_products(?)";
+                let valueArr = [categoryId];
 
                 connection.queryHandler(query, valueArr, false,function(error, results, fields) {
                     if (error){
@@ -118,13 +118,13 @@ const commonModel = {}
                         reject(error);
                     
                     }else {
-                        console.log(results[0]);
+                        
                         resolve(results[0]); 
                     }         
 
                 });
             } catch (err) {
-                console.log(err)
+                
                 reject(err);
             }
         });
@@ -135,8 +135,8 @@ const commonModel = {}
         return new promise((resolve, reject) => {
             try {
             //insert into cart
-                var query = "CALL sp_addCart(?,?)";
-                var valueArr = [data.decodedUserId,data.productId];
+                let query = "CALL sp_addCart(?,?)";
+                let valueArr = [data.decodedUserId,data.productId];
 
                 connection.queryHandler(query, valueArr, false,function(error, results, fields) {
                     if (error){
@@ -144,13 +144,13 @@ const commonModel = {}
                         reject(error);
                     
                     }else {
-                        console.log(results[0]);
+                        
                         resolve(results[0]); 
                     }         
 
                 });
             } catch (err) {
-                console.log(err)
+                
                 reject(err);
             }
         });
@@ -161,8 +161,8 @@ const commonModel = {}
         return new promise((resolve, reject) => {
             try {
             //get cart
-                var query = "CALL sp_getCart(?)";
-                var valueArr = [data.decodedUserId];
+                let query = "CALL sp_getCart(?)";
+                let valueArr = [data.decodedUserId];
 
                 connection.queryHandler(query, valueArr, false,function(error, results, fields) {
                     if (error){
@@ -170,13 +170,13 @@ const commonModel = {}
                         reject(error);
                     
                     }else {
-                        console.log(results[0]);
+                        
                         resolve(results[0]); 
                     }         
 
                 });
             } catch (err) {
-                console.log(err)
+                
                 reject(err);
             }
         });
