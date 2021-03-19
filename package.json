@@ -28,7 +28,7 @@
     "paypal-rest-sdk": "^1.8.1",
     "promise": "^8.0.3",
     "rand-token": "^0.4.0",
-    "schema-inspector": "^1.6.8",
+    "schema-inspector": "^2.0.0",
     "stripe": "^7.1.0",
     "sync-each": "^1.0.1",
     "voucher-code-generator": "^1.1.1"
